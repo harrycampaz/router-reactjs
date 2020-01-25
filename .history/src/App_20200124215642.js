@@ -35,7 +35,6 @@ function App() {
       <Header/>
       <main className="container mt-5">
         <Switch>
-        
           <Route exact path ="/products" render={() => (
             <Products products={products}/>
           )}/>

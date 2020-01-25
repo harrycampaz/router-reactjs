@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import axios from "axios";
+import React from 'react';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Products from './components/Product/Products';
@@ -11,36 +10,15 @@ import Footer from './ui/Footer';
 
 
 function App() {
-
-  const [products, setProducts]= useState([]);
-
-  useEffect(()=> {
-
-    fetchApi();
-
-  }, [])
-
-  const fetchApi = async () => {
-    const result = await axios.get('http://localhost:4000/store');
-
-    console.log(result.data);
-
-    setProducts(result.data);
-    
-  }
-
-
   return (
     <Router>
       <Header/>
       <main className="container mt-5">
         <Switch>
-        
-          <Route exact path ="/products" render={() => (
-            <Products products={products}/>
-          )}/>
+          <Route exact path ="/products" component={Products}/>
           <Route exact path ="/add-product" component={AddProduct}/>
           <Route exact path ="/products/:id" component={Product}/>
+          
           <Route exact path ="/products/editar/:id" component={EditProduct}/>
         </Switch>
       </main>

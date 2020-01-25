@@ -24,8 +24,6 @@ function App() {
     const result = await axios.get('http://localhost:4000/store');
 
     console.log(result.data);
-
-    setProducts(result.data);
     
   }
 
@@ -35,10 +33,7 @@ function App() {
       <Header/>
       <main className="container mt-5">
         <Switch>
-        
-          <Route exact path ="/products" render={() => (
-            <Products products={products}/>
-          )}/>
+          <Route exact path ="/products" component={Products}/>
           <Route exact path ="/add-product" component={AddProduct}/>
           <Route exact path ="/products/:id" component={Product}/>
           <Route exact path ="/products/editar/:id" component={EditProduct}/>

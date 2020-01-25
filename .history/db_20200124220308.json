@@ -1,0 +1,22 @@
+{
+    "store" : [
+        {
+            "id": 1,
+            "name": "Nike Vapor",
+            "precio": "300",
+            "description": "Tenis muy comodas"
+        },
+        {
+            "id": 2,
+            "name": "Camiseta Jordan",
+            "precio": "50",
+            "description": "Camiseta tipo buso"
+        },
+        {
+            "id": 3,
+            "name": "Camisilla Tommy",
+            "precio": "30",
+            "description": "Camisilla de tela fria"
+        }
+    ]
+}

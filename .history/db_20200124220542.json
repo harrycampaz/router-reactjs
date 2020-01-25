@@ -1,0 +1,25 @@
+{
+    "store" : [
+        {
+            "id": 1,
+            "name": "Nike Vapor",
+            "price": "300",
+            "description": "Tenis muy comodas",
+            "category":"tenis"
+        },
+        {
+            "id": 2,
+            "name": "Camiseta Jordan",
+            "price": "50",
+            "description": "Camiseta tipo buso",
+            "category":"ropa"
+        },
+        {
+            "id": 3,
+            "name": "Camisilla Tommy",
+            "price": "30",
+            "description": "Camisilla de tela fria",
+            "category":"ropa"
+        }
+    ]
+}
