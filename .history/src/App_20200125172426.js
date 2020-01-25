@@ -53,11 +53,8 @@ function App() {
           <Route exact path="/products/editar/:id" render={props => {
 
             const idProd = parseInt(props.match.params.id);
-
-            const product = products.filter(prod => prod.id === idProd);
-
             return (
-              <EditProduct product = {products[0]} />
+              <EditProduct  />
             )
           }} />
         </Switch>

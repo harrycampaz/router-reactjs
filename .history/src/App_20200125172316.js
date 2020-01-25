@@ -12,17 +12,17 @@ import Footer from './ui/Footer';
 
 function App() {
 
-  const [products, setProducts] = useState([]);
+  const [products, setProducts]= useState([]);
   const [reloadProducts, setReloadProducts] = useState(true)
 
 
-  useEffect(() => {
+  useEffect(()=> {
 
-    if (reloadProducts) {
+    if(reloadProducts){
       fetchApi();
       setReloadProducts(false);
     }
-
+    
 
   }, [reloadProducts])
 
@@ -32,34 +32,33 @@ function App() {
     console.log(result.data);
 
     setProducts(result.data);
-
+    
   }
 
 
   return (
     <Router>
-      <Header />
+      <Header/>
       <main className="container mt-5">
         <Switch>
+        
+          <Route exact path ="/products" render={() => (
+            <Products products={products}/>
+          )}/>
+          <Route exact path ="/add-product" 
+          render={()=> (
+            <AddProduct setReloadProducts={setReloadProducts}/>
+          )}/>
+          <Route exact path ="/products/:id" component={Product}/>
+          <Route exact path ="/products/editar/:id" render={props => {
 
-          <Route exact path="/products" render={() => (
-            <Products products={products} />
-          )} />
-          <Route exact path="/add-product"
-            render={() => (
-              <AddProduct setReloadProducts={setReloadProducts} />
-            )} />
-          <Route exact path="/products/:id" component={Product} />
-          <Route exact path="/products/editar/:id" render={props => {
+console.log(props.match.params.id);
+return (
+  <EditProduct/>
+)
 
-            const idProd = parseInt(props.match.params.id);
 
-            const product = products.filter(prod => prod.id === idProd);
-
-            return (
-              <EditProduct product = {products[0]} />
-            )
-          }} />
+          }}/>
         </Switch>
       </main>
       <Footer />

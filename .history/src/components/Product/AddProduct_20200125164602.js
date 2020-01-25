@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import Error from '../Error';
 import Axios from 'axios';
-import Swal from 'sweetalert2';
-import { withRouter } from 'react-router-dom';
 
-
-function AddProduct({history, setReloadProducts}) {
+function AddProduct(props) {
 
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
@@ -14,11 +11,11 @@ function AddProduct({history, setReloadProducts}) {
     const [error, setError] = useState(false);
 
 
-    const readRadio =   (e) =>{
+    const readRadio =  async (e) =>{
 
         setCategory(e.target.value)
     }
-    const saveProduct = async (e) =>{
+    const saveProduct = (e) =>{
         e.preventDefault();
 
         if(name === '' || price === '' || category === ''){
@@ -35,34 +32,11 @@ function AddProduct({history, setReloadProducts}) {
                 category,
                 description
             });
- 
-            if(result.status === 201){
-                Swal.fire(
-                    'Productos Guardado!',
-                    'El  productos de creo satisfastoriamente!',
-                    'success'
-                  )
-            }else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Paso algo malo!',
-                  })
-            }
 
         } catch (error){
-            console.log(error);
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Paso algo malo!',
-              })
-            
-        }
-        setReloadProducts(true)
-        history.push('/products');
 
-       
+        }
+
     }
 
 
@@ -144,4 +118,4 @@ function AddProduct({history, setReloadProducts}) {
     );
 }
 
-export default withRouter(AddProduct);
+export default AddProduct;

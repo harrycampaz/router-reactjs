@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import { withRouter } from 'react-router-dom';
 
 
-function AddProduct({history, setReloadProducts}) {
+function AddProduct({history}) {
 
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
@@ -59,10 +59,7 @@ function AddProduct({history, setReloadProducts}) {
               })
             
         }
-        setReloadProducts(true)
-        history.push('/products');
 
-       
     }
 
 

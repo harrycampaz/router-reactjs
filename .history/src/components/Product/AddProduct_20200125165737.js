@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import Error from '../Error';
 import Axios from 'axios';
 import Swal from 'sweetalert2';
-import { withRouter } from 'react-router-dom';
 
-
-function AddProduct({history, setReloadProducts}) {
+function AddProduct(props) {
 
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
@@ -30,7 +28,7 @@ function AddProduct({history, setReloadProducts}) {
         try {
 
             const result = await Axios.post('http://localhost:4000/store', {
-                name,
+                nam: name,
                 price,
                 category,
                 description
@@ -59,10 +57,7 @@ function AddProduct({history, setReloadProducts}) {
               })
             
         }
-        setReloadProducts(true)
-        history.push('/products');
 
-       
     }
 
 
@@ -144,4 +139,4 @@ function AddProduct({history, setReloadProducts}) {
     );
 }
 
-export default withRouter(AddProduct);
+export default AddProduct;

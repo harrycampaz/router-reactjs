@@ -59,7 +59,7 @@ function AddProduct({history, setReloadProducts}) {
               })
             
         }
-        setReloadProducts(true)
+        setReloadProducts(false)
         history.push('/products');
 
        

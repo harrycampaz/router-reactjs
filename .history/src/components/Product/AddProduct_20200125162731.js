@@ -1,0 +1,64 @@
+import React from 'react';
+
+function AddProduct(props) {
+    return (
+        <div className="col-md-8 mx-auto ">
+        <h1 className="text-center">Agregar Nuevo Producto</h1>
+
+        <form
+            className="mt-5"
+        >
+            <div className="form-group">
+                <label>Nombre Producto</label>
+                <input 
+                    type="text" 
+                    className="form-control" 
+                    name="nombre" 
+                    placeholder="Nombre Producto"
+                />
+            </div>
+
+            <div className="form-group">
+                <label>Precio</label>
+                <input 
+                    type="number" 
+                    className="form-control" 
+                    name="precio"
+                    placeholder="Precio del producto"
+                />
+            </div>
+
+            <legend className="text-center">Categoría:</legend>
+            <div className="text-center">
+            <div className="form-check form-check-inline">
+                <input 
+                    className="form-check-input" 
+                    type="radio" 
+                    name="category"
+                    value="tenis"
+                />
+                <label className="form-check-label">
+                    Tenis
+                </label>
+            </div>
+            <div className="form-check form-check-inline">
+                <input 
+                    className="form-check-input" 
+                    type="radio" 
+                    name="category"
+                    value="ropa"
+                />
+                <label className="form-check-label">
+                    Ropa
+                </label>
+            </div>
+
+            </div>
+
+            <input type="submit" className="font-weight-bold text-uppercase mt-5 btn btn-primary btn-block py-3" value="Agregar Producto" />
+        </form>
+    </div>
+    );
+}
+
+export default AddProduct;

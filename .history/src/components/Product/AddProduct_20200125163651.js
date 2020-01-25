@@ -1,76 +1,31 @@
 import React, { useState } from 'react';
-import Error from '../Error';
-import Axios from 'axios';
-import Swal from 'sweetalert2';
-import { withRouter } from 'react-router-dom';
 
-
-function AddProduct({history, setReloadProducts}) {
+function AddProduct(props) {
 
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
     const [category, setCategory] = useState('');
-    const [description, setDecription] = useState('');
     const [error, setError] = useState(false);
 
 
-    const readRadio =   (e) =>{
+    const readRadio = (e) =>{
 
         setCategory(e.target.value)
     }
-    const saveProduct = async (e) =>{
+    const saveProduct = (e) =>{
         e.preventDefault();
 
         if(name === '' || price === '' || category === ''){
             setError(true);
             return;
         }
+
         setError(false);
-
-        try {
-
-            const result = await Axios.post('http://localhost:4000/store', {
-                name,
-                price,
-                category,
-                description
-            });
- 
-            if(result.status === 201){
-                Swal.fire(
-                    'Productos Guardado!',
-                    'El  productos de creo satisfastoriamente!',
-                    'success'
-                  )
-            }else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Paso algo malo!',
-                  })
-            }
-
-        } catch (error){
-            console.log(error);
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Paso algo malo!',
-              })
-            
-        }
-        setReloadProducts(true)
-        history.push('/products');
-
-       
     }
-
 
     return (
         <div className="col-md-8 mx-auto ">
         <h1 className="text-center">Agregar Nuevo Producto</h1>
-
-{(error) ? <Error msg ="Todos los campos sin obligatorios"/>: null}
 
         <form
             className="mt-5"
@@ -84,17 +39,6 @@ function AddProduct({history, setReloadProducts}) {
                     name="name" 
                     placeholder="Nombre Producto"
                     onChange= {(e) => setName(e.target.value)}
-                />
-            </div>
-
-            <div className="form-group">
-                <label>Descripcion del Producto</label>
-                <input 
-                    type="text" 
-                    className="form-control" 
-                    name="description" 
-                    placeholder="Description del Producto"
-                    onChange= {(e) => setDecription(e.target.value)}
                 />
             </div>
 
@@ -144,4 +88,4 @@ function AddProduct({history, setReloadProducts}) {
     );
 }
 
-export default withRouter(AddProduct);
+export default AddProduct;
