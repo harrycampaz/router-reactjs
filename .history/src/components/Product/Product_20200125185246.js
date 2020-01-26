@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import Axios from 'axios';
 import Swal from 'sweetalert2';
 
-function Product({ product, setReloadProducts }) {
-    const deleteProduct =  id  => {
+function Product({ product }) {
+    const deleteProduct = async id  => {
 
         console.log('Delete id: ', id);
         Swal.fire({
@@ -17,7 +17,7 @@ function Product({ product, setReloadProducts }) {
             cancelButtonColor: '#d33',
             confirmButtonText: 'Si, Eliminar',
             cancelButtonText: "Cancelar"
-          }).then( async(result) => {
+          }).then((result) => {
             if (result.value) {
 
 
@@ -25,17 +25,15 @@ function Product({ product, setReloadProducts }) {
 
 
                 try {
-                    const result = await Axios.delete(url);
+                    const result = await Axios.put(url, data);
                     console.log(result);
         
                     if(result.status === 200){
                         Swal.fire(
-                            'Eliminado!',
-                            'El producto fue eliminado.',
+                            'Productos Editado!',
+                            'El  productos se edito satisfastoriamente!',
                             'success'
                           )
-
-                          setReloadProducts(true);
                     }else {
                         Swal.fire({
                             icon: 'error',
@@ -43,7 +41,8 @@ function Product({ product, setReloadProducts }) {
                             text: 'Paso algo malo!',
                           })
                     }
-        
+                    setReloadProducts(true)
+                    history.push('/products');
          
                 } catch (error) {
                     console.log(error);
@@ -53,7 +52,11 @@ function Product({ product, setReloadProducts }) {
                         text: 'Paso algo malo!',
                       })   
                 }  
-           
+              Swal.fire(
+                'Eliminado!',
+                'El producto fue eliminado.',
+                'success'
+              )
             }
           })
 

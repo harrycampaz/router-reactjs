@@ -27,7 +27,7 @@ function EditProduct(props) {
             console.log(priceProductRef.current.value);
             console.log(descriptionProductRef.current.value);
 
-            console.log(categoryInit);
+            console.log(category);
             
             
             return;

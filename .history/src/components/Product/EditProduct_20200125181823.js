@@ -18,23 +18,14 @@ function EditProduct(props) {
 
     const editProduct = async (e)  => {
         e.preventDefault();
-        let categoryInit = (category === '')? product.category : category;
 
-        if(nameProductRef.current.value === '' || priceProductRef.current.value === '' || categoryInit === ''|| descriptionProductRef.current.value === ''){
+        if(nameProductRef.current.value === '' || priceProductRef.current.value === '' || category === '', descriptionProductRef.current.value === ''){
             setError(true);
-            
-            console.log(nameProductRef.current.value);
-            console.log(priceProductRef.current.value);
-            console.log(descriptionProductRef.current.value);
-
-            console.log(categoryInit);
-            
-            
             return;
         }
         setError(false);
 
-       
+        let categoryInit = (category === '')? product.category : category;
 
         const data = {
             name: nameProductRef.current.value,
@@ -71,8 +62,10 @@ function EditProduct(props) {
                 icon: 'error',
                 title: 'Oops...',
                 text: 'Paso algo malo!',
-              })   
-        }  
+              })
+            
+        }
+    
        
     }
 

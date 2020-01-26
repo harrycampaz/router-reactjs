@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Axios from 'axios';
 import Swal from 'sweetalert2';
 
-function Product({ product, setReloadProducts }) {
+function Product({ product }) {
     const deleteProduct =  id  => {
 
         console.log('Delete id: ', id);
@@ -25,17 +25,15 @@ function Product({ product, setReloadProducts }) {
 
 
                 try {
-                    const result = await Axios.delete(url);
+                    const result = await Axios.put(url, data);
                     console.log(result);
         
                     if(result.status === 200){
                         Swal.fire(
-                            'Eliminado!',
-                            'El producto fue eliminado.',
+                            'Productos Editado!',
+                            'El  productos se edito satisfastoriamente!',
                             'success'
                           )
-
-                          setReloadProducts(true);
                     }else {
                         Swal.fire({
                             icon: 'error',
@@ -53,7 +51,11 @@ function Product({ product, setReloadProducts }) {
                         text: 'Paso algo malo!',
                       })   
                 }  
-           
+              Swal.fire(
+                'Eliminado!',
+                'El producto fue eliminado.',
+                'success'
+              )
             }
           })
 

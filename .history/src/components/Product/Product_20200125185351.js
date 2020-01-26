@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Axios from 'axios';
 import Swal from 'sweetalert2';
 
-function Product({ product, setReloadProducts }) {
+function Product({ product }) {
     const deleteProduct =  id  => {
 
         console.log('Delete id: ', id);
@@ -34,8 +34,6 @@ function Product({ product, setReloadProducts }) {
                             'El producto fue eliminado.',
                             'success'
                           )
-
-                          setReloadProducts(true);
                     }else {
                         Swal.fire({
                             icon: 'error',

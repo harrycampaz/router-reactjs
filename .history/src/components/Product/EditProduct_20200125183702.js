@@ -18,23 +18,23 @@ function EditProduct(props) {
 
     const editProduct = async (e)  => {
         e.preventDefault();
-        let categoryInit = (category === '')? product.category : category;
 
-        if(nameProductRef.current.value === '' || priceProductRef.current.value === '' || categoryInit === ''|| descriptionProductRef.current.value === ''){
+        const newName = nameProductRef.current.value
+        const newPrice = priceProductRef.current.value;
+        const newDescription = descriptionProductRef.current.value;
+
+        console.log(newName);
+        console.log(newPrice);
+        
+
+        if(newName === '' || newPrice === '' || category === ''|| newDescription === ''){
             setError(true);
-            
-            console.log(nameProductRef.current.value);
-            console.log(priceProductRef.current.value);
-            console.log(descriptionProductRef.current.value);
-
-            console.log(categoryInit);
-            
-            
+           
             return;
-        }
+        }else {
         setError(false);
 
-       
+        let categoryInit = (category === '')? product.category : category;
 
         const data = {
             name: nameProductRef.current.value,
@@ -73,7 +73,7 @@ function EditProduct(props) {
                 text: 'Paso algo malo!',
               })   
         }  
-       
+    }     
     }
 
     const readRadio =   (e) =>{

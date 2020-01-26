@@ -43,7 +43,7 @@ function App() {
         <Switch>
 
           <Route exact path="/products" render={() => (
-            <Products products={products} setReloadProducts={setReloadProducts}/>
+            <Products products={products} />
           )} />
           <Route exact path="/add-product"
             render={() => (

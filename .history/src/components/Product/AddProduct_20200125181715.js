@@ -50,6 +50,9 @@ function AddProduct({history, setReloadProducts}) {
                   })
             }
 
+            setReloadProducts(true)
+            history.push('/products');
+
         } catch (error){
             console.log(error);
             Swal.fire({
@@ -59,8 +62,7 @@ function AddProduct({history, setReloadProducts}) {
               })
             
         }
-        setReloadProducts(true)
-        history.push('/products');
+       
     }
 
 

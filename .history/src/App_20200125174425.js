@@ -43,7 +43,7 @@ function App() {
         <Switch>
 
           <Route exact path="/products" render={() => (
-            <Products products={products} setReloadProducts={setReloadProducts}/>
+            <Products products={products} />
           )} />
           <Route exact path="/add-product"
             render={() => (
@@ -57,7 +57,7 @@ function App() {
             const product = products.filter(prod => prod.id === idProd);
 
             return (
-              <EditProduct product = {product[0]} setReloadProducts={setReloadProducts} />
+              <EditProduct product = {product[0]} />
             )
           }} />
         </Switch>

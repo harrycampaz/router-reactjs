@@ -5,9 +5,7 @@ import Swal from 'sweetalert2';
 import { withRouter } from 'react-router-dom';
 
 
-function EditProduct(props) {
-
-    const {history, product, setReloadProducts} = props;
+function EditProduct({product}) {
 
     const nameProductRef = useRef('');
     const priceProductRef = useRef('');
@@ -19,20 +17,6 @@ function EditProduct(props) {
     const editProduct = async (e)  => {
         e.preventDefault();
         let categoryInit = (category === '')? product.category : category;
-
-        if(nameProductRef.current.value === '' || priceProductRef.current.value === '' || categoryInit === ''|| descriptionProductRef.current.value === ''){
-            setError(true);
-            
-            console.log(nameProductRef.current.value);
-            console.log(priceProductRef.current.value);
-            console.log(descriptionProductRef.current.value);
-
-            console.log(categoryInit);
-            
-            
-            return;
-        }
-        setError(false);
 
        
 
@@ -48,22 +32,7 @@ function EditProduct(props) {
         try {
             const result = await Axios.put(url, data);
             console.log(result);
-
-            if(result.status === 200){
-                Swal.fire(
-                    'Productos Editado!',
-                    'El  productos se edito satisfastoriamente!',
-                    'success'
-                  )
-            }else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Paso algo malo!',
-                  })
-            }
-            setReloadProducts(true)
-            history.push('/products');
+            
  
         } catch (error) {
             console.log(error);
@@ -71,9 +40,11 @@ function EditProduct(props) {
                 icon: 'error',
                 title: 'Oops...',
                 text: 'Paso algo malo!',
-              })   
-        }  
-       
+              })
+            
+            
+        }
+    
     }
 
     const readRadio =   (e) =>{
@@ -109,7 +80,7 @@ function EditProduct(props) {
                         className="form-control"
                         name="description"
                         placeholder="Description del Producto"
-                        ref = {descriptionProductRef}
+                        ref = {priceProductRef}
                         defaultValue={product.description}
                     />
                 </div>
@@ -163,4 +134,4 @@ function EditProduct(props) {
     );
 }
 
-export default withRouter(EditProduct);
+export default EditProduct;

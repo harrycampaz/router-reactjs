@@ -61,6 +61,8 @@ function AddProduct({history, setReloadProducts}) {
         }
         setReloadProducts(true)
         history.push('/products');
+
+       
     }
 
 
