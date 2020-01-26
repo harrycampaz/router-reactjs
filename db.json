@@ -1,15 +1,16 @@
 {
   "store": [
     {
-      "id": 3,
       "name": "Camisilla Tommy",
+      "description": "Descripción de producto",
       "price": "30",
-      "description": "Camisilla de tela fria",
-      "category": "ropa"
+      "category": "ropa",
+      "id": 3
     },
     {
       "name": "Tenis Adidas",
-      "price": "10012",
+      "description": "Tenis de marca",
+      "price": "100",
       "category": "tenis",
       "id": 4
     },
@@ -22,15 +23,10 @@
     },
     {
       "name": "Adidas nike",
-      "price": "10022",
+      "description": "Estas tenis",
+      "price": "220",
       "category": "tenis",
       "id": 8
-    },
-    {
-      "name": "Producto23",
-      "price": "9022",
-      "category": "tenis",
-      "id": 9
     }
   ]
 }
